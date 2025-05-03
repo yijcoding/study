@@ -1,8 +1,6 @@
 package com.mysite.sbb.question;
 
-import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,14 +31,14 @@ public class QuestionController {
 		return "question_list";
 	}
 	
-	@GetMapping("/detail/{id}")
-	public String detailById(Model model, @PathVariable("id") Integer id) {
+	@GetMapping("/detail/{questionId}")
+	public String detailById(Model model, @PathVariable("questionId") Integer questionId) {
 		
 		//id 값으로 question 상세 조회
-		Question questionDetail = this.questionService.getDetail(id);
+		Question questionDetail = this.questionService.getDetail(questionId);
 		model.addAttribute("questionDetail", questionDetail);
 		
-		//id 값으로 qusetion의 답글 목록 전체 조회
+		//Question에서 answerList 참조
 		List<Answer> answerList = questionDetail.getAnswerList();
 		model.addAttribute("answerList", answerList);
 		model.addAttribute("answerTotalCount", answerList.size());

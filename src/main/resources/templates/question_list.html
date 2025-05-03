@@ -9,10 +9,10 @@
 	</thead>
 	<tbody>
 		<tr th:each="row : ${questionList}">
-			<td>
-				<a th:href="@{|/question/detail/${row.id}|}" th:text="${row.subject}"></a>
+			<td style="padding-right: 10px;">
+				<a th:href="@{|/question/detail/${row.questionId}|}" th:text="${row.questionSubject}"></a>
 			</td>
-			<td th:text="${row.createDate}"></td>
+			<td th:text="${#temporals.format(row.createDate, 'yyyy-MM-dd')}"></td>
 		</tr>		
 	</tbody>
 </table>

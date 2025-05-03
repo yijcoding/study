@@ -20,10 +20,10 @@ public class Answer {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer answerId;
 
     @Column(columnDefinition = "TEXT")
-    private String content;
+    private String answerContent;
 
     private String createRegId; //답글 등록 id
 	private String updateRegId; //답글 수정 id

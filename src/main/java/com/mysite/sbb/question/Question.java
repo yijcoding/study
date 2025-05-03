@@ -22,13 +22,13 @@ public class Question {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id; //고유번호
+	private Integer questonId; //고유번호
 	
 	@Column(length = 200)
-	private String subject; //게시글 제목
+	private String questionSubject; //게시글 제목
 	
 	@Column(columnDefinition = "TEXT")
-	private String content; //게시글 내용
+	private String questionContent; //게시글 내용
 	
 	private String createRegId; //게시글 등록 id
 	private String updateRegId; //게시글 수정 id

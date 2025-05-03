@@ -1,8 +1,13 @@
-<h1 th:text="${questionDetail.subject}"></h1>
-<div th:text="${questionDetail.content}"></div>
+<h1 th:text="${questionDetail.questionSubject}"></h1>
+<div th:text="${questionDetail.questionContent}"></div>
 
 <h4 th:text="${answerTotalCount}"></h4>
 
 <ul th:each="row : ${answerList}">
-	<li th:text="${row.content}"></li>
+	<li th:text="${row.answerContent}"></li>
 </ul>
+
+<form th:action="@{|/answer/create/${questionDetail.questionId}|}" method="post">
+	<textarea name="answerContent" id="answerContent" rows="15"></textarea>
+	<input type="submit" value="답변등록">
+</form>
