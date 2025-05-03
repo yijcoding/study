@@ -1,18 +1,24 @@
-<h2>question list</h2>
-
-<table>
-	<thead>
-		<tr>
-			<th>제목</th>
-			<th>작성일시</th>			
-		</tr>
-	</thead>
-	<tbody>
-		<tr th:each="row : ${questionList}">
-			<td style="padding-right: 10px;">
-				<a th:href="@{|/question/detail/${row.questionId}|}" th:text="${row.questionSubject}"></a>
-			</td>
-			<td th:text="${#temporals.format(row.createDate, 'yyyy-MM-dd')}"></td>
-		</tr>		
-	</tbody>
-</table>
+<html layout:decorate="~{layout}">
+	<div layout:fragment="content" class="container my-3">
+	    <table class="table">
+	        <thead class="table-dark">
+	            <tr>
+	                <th>번호</th>
+	                <th>제목</th>
+	                <th>작성일시</th>
+	            </tr>
+	        </thead>
+	        <tbody>
+	            <tr th:each="question, loop : ${questionList}">
+	                <td th:text="${loop.count}"></td>
+	                <td>
+	                    <a th:href="@{|/question/detail/${question.qid}|}" th:text="${question.questionSubject}"></a>
+	                </td>
+	                <td th:text="${#temporals.format(question.createDate, 'yyyy-MM-dd')}"></td>
+	            </tr>
+	        </tbody>
+	    </table>
+		
+		<a href="/question/createFrom" class="btn btn-primary">질문등록</a>
+	</div>
+</html>

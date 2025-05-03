@@ -1,12 +1,10 @@
 package com.mysite.sbb.answer;
 
 import java.time.LocalDateTime;
-import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
 import com.mysite.sbb.question.Question;
-import com.mysite.sbb.question.QuestionRepository;
 
 import lombok.RequiredArgsConstructor;
 
@@ -15,20 +13,12 @@ import lombok.RequiredArgsConstructor;
 public class AnswerService {
 	
 	private final AnswerRepository answerRepository;
-	private final QuestionRepository quesionRepository;
 	
-	public void getInsert(Answer answer) {
-		Optional<Question> oq = this.quesionRepository.findById(1);
-		Question quesion = new Question();
-		if(oq.isPresent()) {
-			quesion = oq.get();
-		}
-		
-		answer.setContent("답글입니다");
+	public void createAnswer(Question question, String answerContent) {
+		Answer answer = new Answer();
+		answer.setAnswerContent(answerContent);
 		answer.setCreateDate(LocalDateTime.now());
-		answer.setDelYn("N");
-		answer.setQuestion(quesion);
-		
+		answer.setQuestion(question);
 		this.answerRepository.save(answer);
 	}
 }

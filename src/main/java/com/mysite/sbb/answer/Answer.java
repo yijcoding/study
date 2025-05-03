@@ -20,7 +20,7 @@ public class Answer {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer answerId;
+    private Integer aid;
 
     @Column(columnDefinition = "TEXT")
     private String answerContent;

@@ -22,7 +22,7 @@ public class Question {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer questonId; //고유번호
+	private Integer qid; //고유번호
 	
 	@Column(length = 200)
 	private String questionSubject; //게시글 제목

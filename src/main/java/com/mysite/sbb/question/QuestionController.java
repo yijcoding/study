@@ -1,16 +1,20 @@
 package com.mysite.sbb.question;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mysite.sbb.answer.Answer;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @Controller
 @RequiredArgsConstructor
@@ -31,18 +35,31 @@ public class QuestionController {
 		return "question_list";
 	}
 	
-	@GetMapping("/detail/{questionId}")
-	public String detailById(Model model, @PathVariable("questionId") Integer questionId) {
+	@GetMapping("/detail/{qid}")
+	public String detailById(Model model, @PathVariable("qid") Integer qid) {
 		
 		//id 값으로 question 상세 조회
-		Question questionDetail = this.questionService.getDetail(questionId);
-		model.addAttribute("questionDetail", questionDetail);
+		Question questionDetail = this.questionService.getDetail(qid);
+		model.addAttribute("question", questionDetail);
 		
-		//Question에서 answerList 참조
+		//질문에서 답변을 참조
 		List<Answer> answerList = questionDetail.getAnswerList();
 		model.addAttribute("answerList", answerList);
 		model.addAttribute("answerTotalCount", answerList.size());
 		
 		return "question_detail";
 	}
+	
+	@GetMapping("/createFrom")
+	public String create() {
+		return "question_form";
+	}
+	
+	@PostMapping("/create")
+	public String createQuestion(Question question) {
+		this.questionService.getInsert(question);
+		return "redirect:/question/list";
+	}
 }
+
+

@@ -1,5 +1,6 @@
 package com.mysite.sbb.question;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,6 +34,7 @@ public class QuestionService {
 	}
 	
 	public void getInsert(Question question) {
+		question.setCreateDate(LocalDateTime.now());
 		this.questionRepository.save(question);
 	}
 }
