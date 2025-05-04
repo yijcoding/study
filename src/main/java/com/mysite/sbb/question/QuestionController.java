@@ -60,6 +60,14 @@ public class QuestionController {
 		this.questionService.getInsert(question);
 		return "redirect:/question/list";
 	}
+	
+	@PostMapping("/delete/{qid}")
+	public String deleteQuestion(@PathVariable("qid") Integer id) {
+		
+		this.questionService.getDeleteById(id);
+		
+		return "redirect:/question/list";
+	}
 }
 
 

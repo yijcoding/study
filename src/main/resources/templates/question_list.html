@@ -14,7 +14,7 @@
 	                <td>
 	                    <a th:href="@{|/question/detail/${question.qid}|}" th:text="${question.questionSubject}"></a>
 	                </td>
-	                <td th:text="${#temporals.format(question.createDate, 'yyyy-MM-dd')}"></td>
+	                <td th:text="${#temporals.format(question.createDate, 'yyyy-MM-dd HH:mm')}"></td>
 	            </tr>
 	        </tbody>
 	    </table>

@@ -35,6 +35,11 @@ public class QuestionService {
 	
 	public void getInsert(Question question) {
 		question.setCreateDate(LocalDateTime.now());
+		question.setDelYn("N");
 		this.questionRepository.save(question);
+	}
+	
+	public void getDeleteById(Integer qid) {
+		this.questionRepository.deleteById(qid);
 	}
 }
