@@ -24,14 +24,19 @@ dependencies {
 	//타임리프
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
+    
+	//implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
+    
+    //DB
+    implementation 'mysql:mysql-connector-java:8.0.32'
 	
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 	
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	
-	//개발환경에서 사용할 H2 DB => 추후 변경 필요
-	runtimeOnly 'com.h2database:h2'
 	
 	//Lombok 관련
 	compileOnly 'org.projectlombok:lombok' 
