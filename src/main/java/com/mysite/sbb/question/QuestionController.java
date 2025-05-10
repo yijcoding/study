@@ -1,6 +1,4 @@
 package com.mysite.sbb.question;
-
-import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
@@ -10,12 +8,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mysite.sbb.answer.Answer;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.RequestParam;
-
 
 @Controller
 @RequiredArgsConstructor
@@ -30,12 +27,7 @@ public class QuestionController {
 	}
 	
 	@GetMapping("/list")
-	public String list(Model model, @RequestParam(value="page", defaultValue="0") int page) {
-		Page<Question> paging = this.questionService.getList(page);
-		model.addAttribute("paging", paging);
-		
-		//List<Question> questionList = this.questionService.getList();
-		//model.addAttribute("questionList", questionList);
+	public String list() {
 		return "question_list";
 	}
 	
