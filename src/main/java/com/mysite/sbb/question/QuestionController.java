@@ -23,7 +23,7 @@ public class QuestionController {
 	
 	@GetMapping("/")
 	public String rootPage() {
-		return "redirect:/list";
+		return "redirect:/main";
 	}
 	
 	@GetMapping("/list")
@@ -31,22 +31,12 @@ public class QuestionController {
 		return "question_list";
 	}
 	
-	@GetMapping("/detail/{qid}")
-	public String detailById(Model model, @PathVariable("qid") Integer qid) {
-		
-		//id 값으로 question 상세 조회
-		Question questionDetail = this.questionService.getDetail(qid);
-		model.addAttribute("question", questionDetail);
-		
-		//질문에서 답변을 참조
-		List<Answer> answerList = questionDetail.getAnswerList();
-		model.addAttribute("answerList", answerList);
-		model.addAttribute("answerTotalCount", answerList.size());
-		
+	@GetMapping("/detail")
+	public String detail() {
 		return "question_detail";
 	}
 	
-	@GetMapping("/createFrom")
+	@GetMapping("/createForm")
 	public String create() {
 		return "question_form";
 	}

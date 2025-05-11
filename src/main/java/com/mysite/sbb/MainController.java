@@ -7,10 +7,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class MainController {
 
-	@GetMapping("/sbb")
-	@ResponseBody
-	public String index() {
-//		System.out.println("index");
-		return "index";
+	@GetMapping("/")
+	public String main() {
+		return "main";
 	}
 }

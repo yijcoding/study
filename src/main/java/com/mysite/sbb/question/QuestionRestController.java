@@ -1,5 +1,7 @@
 package com.mysite.sbb.question;
 
+import java.util.Optional;
+
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,4 +23,10 @@ public class QuestionRestController {
         Page<Question> paging = questionService.getList(page);
         return ResponseEntity.ok(paging);
     }
+	
+	@GetMapping("/detail")
+	public ResponseEntity<Question> detail(@RequestParam(value = "qid") Integer qid){
+		Question question = this.questionService.getDetail(qid);
+		return ResponseEntity.ok(question);
+	}
 }
