@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			const qDetailSubject = document.getElementById("question-detail-subject");
 			const qDetailContent = document.getElementById("question-detail-content");
 			const qDetailCreateDt = document.getElementById("question-detail-createDt");
+			const delQid = document.getElementById("delQid");
 			
 			//날짜 포맷
 			const date = new Date(data.createDate);
@@ -34,5 +35,8 @@ document.addEventListener('DOMContentLoaded', function() {
 			qDetailSubject.innerHTML = html_subject;
 			qDetailContent.innerHTML = html_content;
 			qDetailCreateDt.innerHTML = html_createDt;
+			
+			//게시글을 삭제하기 위해 hidden value 값으로 넣기 위함
+			delQid.value = data.qid;
 		})
 })
